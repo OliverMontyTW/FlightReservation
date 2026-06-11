@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZOMO_DESC_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="FLIGHT" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Resevationid"/>
+                </Key>
+                <Property Name="Resevationid" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Reservation"/>
+                <Property Name="Fullname" Type="Edm.String" MaxLength="80" sap:unicode="false" sap:label="Full Name"/>
+                <Property Name="Firstname" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="First Name"/>
+                <Property Name="Lastname" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="name"/>
+                <Property Name="Carrid" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Airline"/>
+                <Property Name="Connid" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Flight Number"/>
+                <Property Name="Fldate" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Date"/>
+                <Property Name="Planetype" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Plane Type"/>
+            </EntityType>
+            <EntityType Name="ReservationDetails" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Resevationid"/>
+                    <PropertyRef Name="Reservationitem"/>
+                </Key>
+                <Property Name="Mandt" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Client"/>
+                <Property Name="Resevationid" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Reservation"/>
+                <Property Name="Reservationitem" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Reservation item"/>
+                <Property Name="Fullname" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="Full Name"/>
+                <Property Name="Firstname" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="First Name"/>
+                <Property Name="Lastname" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="name"/>
+                <Property Name="Seatnumber" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Seat number"/>
+                <Property Name="Baggage" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3" sap:unicode="false" sap:label="Baggage"/>
+                <Property Name="Seatpreference" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="seat position"/>
+                <NavigationProperty Name="ReservationToFlight" Relationship="ZOMO_DESC_SRV.ReservationToFlight" FromRole="FromRole_ReservationToFlight" ToRole="ToRole_ReservationToFlight"/>
+            </EntityType>
+            <ComplexType Name="ReturnStatus">
+                <Property Name="Message" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </ComplexType>
+            <Association Name="ReservationToFlight" sap:content-version="1" sap:label="ReservationToFlight">
+                <End Type="ZOMO_DESC_SRV.ReservationDetails" Multiplicity="1" Role="FromRole_ReservationToFlight"/>
+                <End Type="ZOMO_DESC_SRV.FLIGHT" Multiplicity="*" Role="ToRole_ReservationToFlight"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ReservationToFlight">
+                        <PropertyRef Name="Resevationid"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ReservationToFlight">
+                        <PropertyRef Name="Resevationid"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZOMO_DESC_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="FLIGHTSet" EntityType="ZOMO_DESC_SRV.FLIGHT" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ReservationDetailsSet" EntityType="ZOMO_DESC_SRV.ReservationDetails" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="ReservationToFlightSet" Association="ZOMO_DESC_SRV.ReservationToFlight" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ReservationDetailsSet" Role="FromRole_ReservationToFlight"/>
+                    <End EntitySet="FLIGHTSet" Role="ToRole_ReservationToFlight"/>
+                </AssociationSet>
+                <FunctionImport Name="ModifyStatus" ReturnType="ZOMO_DESC_SRV.ReturnStatus" m:HttpMethod="GET">
+                    <Parameter Name="Status" Type="Edm.String" Mode="In" sap:label="Status"/>
+                    <Parameter Name="ReservationId" Type="Edm.String" Mode="In" sap:label="Reservation ID"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <atom:link rel="self" href="http://sapdev:443/sap/opu/odata/sap/ZOMO_DESC_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://sapdev:443/sap/opu/odata/sap/ZOMO_DESC_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

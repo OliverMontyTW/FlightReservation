@@ -1,0 +1,56 @@
+<mvc:View
+    controllerName="zomoreservation.controller.Reservations"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page
+        id="page"
+        title="{i18n>title}">
+
+        <content>
+            <Table
+                id="reservationTable"
+                items="{flights>/}">
+
+                <columns>
+                    <Column id="_IDGenColumn" >
+                        <header>
+                            <Text id="_IDGenText" text="Reservation ID" />
+                        </header>
+                    </Column>
+
+                    <Column id="_IDGenColumn1">
+                        <header>
+                            <Text id="_IDGenText1" text="Full Name" />
+                        </header>
+                    </Column>
+
+                    <Column id="_IDGenColumn2">
+                        <header>
+                            <Text id="_IDGenText2" text="Carrier" />
+                        </header>
+                    </Column>
+
+                    <Column id="_IDGenColumn3">
+                        <header>
+                            <Text id="_IDGenText3" text="Connection" />
+                        </header>
+                    </Column>
+                </columns>
+
+                <items>
+                    <ColumnListItem id="_IDGenColumnListItem1">
+                        <cells>
+                            <Text id="_IDGenText4" text="{flights>Resevationid}" />
+                            <Text id="_IDGenText5" text="{flights>Fullname}" />
+                            <Text id="_IDGenText6" text="{flights>Carrid}" />
+                            <Text id="_IDGenText7" text="{flights>Connid}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+
+            </Table>
+        </content>
+
+    </Page>
+</mvc:View>
