@@ -19,6 +19,21 @@ sap.ui.define([
                     Log.error("Error reading FLIGHTSet", oError);
                 }
             });
+        },
+        onSearch: function (oEvent) {
+            var aFilters = [];
+            var sQuery = oEvent.getSource().getValue();
+
+            if (sQuery && sQuery.length > 0) {
+                var oFilter = new sap.ui.model.Filter("Fullname", sap.ui.model.FilterOperator.Contains, sQuery);
+                aFilters.push(oFilter);
+            }
+
+            var oTable = this.byId("reservationTable");
+
+            var oBinding = oTable.getBinding("items");
+
+            oBinding.filter(aFilters, "Application");
         }
     });
 });

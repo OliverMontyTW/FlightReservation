@@ -6,6 +6,15 @@
     <Page
         id="page"
         title="{i18n>title}">
+        <subHeader>
+            <OverflowToolbar id="toolbar">
+                <SearchField
+                    id="searchField"
+                    liveChange=".onSearch"
+                    width="80%"
+                />
+            </OverflowToolbar>
+        </subHeader>
 
         <content>
             <Table
