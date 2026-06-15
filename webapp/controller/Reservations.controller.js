@@ -1,8 +1,9 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
-	"sap/base/Log"
-], (Controller, JSONModel, Log) => {
+	"sap/base/Log",
+    "sap/ui/model/Filter"
+], (Controller, JSONModel, Log, Filter) => {
     "use strict";
 
     return Controller.extend("zomoreservation.controller.Reservations", {
@@ -16,16 +17,17 @@ sap.ui.define([
                     this.getView().setModel(oJsonModel, "flights");
                 }.bind(this),
                 error: function (oError) {
-                    Log.error("Error reading FLIGHTSet", oError);
+                    Log.error("Error fetching flights!", oError);
                 }
             });
         },
+
         onSearch: function (oEvent) {
             var aFilters = [];
             var sQuery = oEvent.getSource().getValue();
 
             if (sQuery && sQuery.length > 0) {
-                var oFilter = new sap.ui.model.Filter("Fullname", sap.ui.model.FilterOperator.Contains, sQuery);
+                var oFilter = new Filter("Fullname", sap.ui.model.FilterOperator.Contains, sQuery);
                 aFilters.push(oFilter);
             }
 
