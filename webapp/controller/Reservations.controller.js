@@ -11,7 +11,7 @@ sap.ui.define([
             var oModel = this.getOwnerComponent().getModel();
             var oJsonModel = new JSONModel();
 
-            oModel.read("/FLIGHTSet", {
+            oModel.read("/ReservationDetailsSet", {
                 success: function (oData) {
                     oJsonModel.setData(oData.results);
                     this.getView().setModel(oJsonModel, "flights");
