@@ -95,12 +95,25 @@
           "target": [
             "TargetReservations"
           ]
+        },
+        {
+          "name": "Flights",
+          "pattern": "flights/{reservationId}/{reservationItem}",
+          "target": [
+            "Flights"
+          ]
         }
       ],
       "targets": {
         "TargetReservations": {
           "id": "Reservations",
           "name": "Reservations"
+        },
+        "Flights": {
+          "viewType": "XML",
+          "id": "Flights",
+          "name": "Flights",
+          "transition": "slide"
         }
       }
     },

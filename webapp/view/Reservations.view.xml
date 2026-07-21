@@ -19,6 +19,8 @@
         <content>
             <Table
                 id="reservationTable"
+                selectionChange=".handleSelectionChange"
+                mode="SingleSelectMaster"
                 items="{flights>/}">
 
                 <columns>
@@ -48,7 +50,7 @@
                 </columns>
 
                 <items>
-                    <ColumnListItem id="_IDGenColumnListItem1">
+                    <ColumnListItem id="_IDGenColumnListItem1" type="Navigation">
                         <cells>
                             <Text id="_IDGenText4" text="{flights>Resevationid}" />
                             <Text id="_IDGenText5" text="{flights>Fullname}" />

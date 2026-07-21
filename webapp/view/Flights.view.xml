@@ -1,0 +1,44 @@
+<mvc:View
+    controllerName="zomoreservation.controller.Flights"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+>
+    <Page id="_IDGenPage" title="Reservation Details">
+        <content>
+            <ObjectHeader id="_IDGenObjectHeader"
+                title="{Fullname}"
+                number="{Resevationid}"
+            />
+
+            <ObjectAttribute id="_IDGenObjectAttribute"
+                title="First Name"
+                text="{Firstname}"
+            />
+
+            <ObjectAttribute id="_IDGenObjectAttribute1"
+                title="Last Name"
+                text="{Lastname}"
+            />
+
+            <ObjectAttribute id="_IDGenObjectAttribute2"
+                title="Reservation Item"
+                text="{Reservationitem}"
+            />
+
+            <ObjectAttribute id="_IDGenObjectAttribute3"
+                title="Seat Number"
+                text="{Seatnumber}"
+            />
+
+            <ObjectAttribute id="_IDGenObjectAttribute4"
+                title="Seat Preference"
+                text="{Seatpreference}"
+            />
+
+            <ObjectAttribute id="_IDGenObjectAttribute5"
+                title="Baggage"
+                text="{Baggage}"
+            />
+        </content>
+    </Page>
+</mvc:View>

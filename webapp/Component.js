@@ -7,6 +7,9 @@ sap.ui.define([
     return UIComponent.extend("zomoreservation.Component", {
         metadata: {
             manifest: "json",
+            config: {
+                fullWidth: true
+            },
             interfaces: [
                 "sap.ui.core.IAsyncContentCreation"
             ]
