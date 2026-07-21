@@ -2,43 +2,87 @@
     controllerName="zomoreservation.controller.Flights"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
->
-    <Page id="_IDGenPage" title="Reservation Details">
+    xmlns:form="sap.ui.layout.form">
+
+    <Page
+        id="_IDGenPage"
+        title="Reservation Details">
+
         <content>
-            <ObjectHeader id="_IDGenObjectHeader"
-                title="{Fullname}"
-                number="{Resevationid}"
-            />
+            <form:SimpleForm
+                id="_IDGenSimpleForm"
+                editable="false"
+                layout="ResponsiveGridLayout"
+                labelSpanXL="3"
+                labelSpanL="3"
+                labelSpanM="4"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="4"
+                emptySpanL="4"
+                emptySpanM="0"
+                emptySpanS="0"
+                columnsXL="1"
+                columnsL="1"
+                columnsM="1">
 
-            <ObjectAttribute id="_IDGenObjectAttribute"
-                title="First Name"
-                text="{Firstname}"
-            />
+                <Label
+                    id="_IDGenLabelReservationId"
+                    text="Reservation ID" />
+                <Text
+                    id="_IDGenTextReservationId"
+                    text="{Resevationid}" />
 
-            <ObjectAttribute id="_IDGenObjectAttribute1"
-                title="Last Name"
-                text="{Lastname}"
-            />
+                <Label
+                    id="_IDGenLabelFullName"
+                    text="Full Name" />
+                <Text
+                    id="_IDGenTextFullName"
+                    text="{Fullname}" />
 
-            <ObjectAttribute id="_IDGenObjectAttribute2"
-                title="Reservation Item"
-                text="{Reservationitem}"
-            />
+                <Label
+                    id="_IDGenLabelFirstName"
+                    text="First Name" />
+                <Text
+                    id="_IDGenTextFirstName"
+                    text="{Firstname}" />
 
-            <ObjectAttribute id="_IDGenObjectAttribute3"
-                title="Seat Number"
-                text="{Seatnumber}"
-            />
+                <Label
+                    id="_IDGenLabelLastName"
+                    text="Last Name" />
+                <Text
+                    id="_IDGenTextLastName"
+                    text="{Lastname}" />
 
-            <ObjectAttribute id="_IDGenObjectAttribute4"
-                title="Seat Preference"
-                text="{Seatpreference}"
-            />
+                <Label
+                    id="_IDGenLabelReservationItem"
+                    text="Reservation Item" />
+                <Text
+                    id="_IDGenTextReservationItem"
+                    text="{Reservationitem}" />
 
-            <ObjectAttribute id="_IDGenObjectAttribute5"
-                title="Baggage"
-                text="{Baggage}"
-            />
+                <Label
+                    id="_IDGenLabelSeatNumber"
+                    text="Seat Number" />
+                <Text
+                    id="_IDGenTextSeatNumber"
+                    text="{Seatnumber}" />
+
+                <Label
+                    id="_IDGenLabelSeatPreference"
+                    text="Seat Preference" />
+                <Text
+                    id="_IDGenTextSeatPreference"
+                    text="{Seatpreference}" />
+
+                <Label
+                    id="_IDGenLabelBaggage"
+                    text="Baggage" />
+                <Text
+                    id="_IDGenTextBaggage"
+                    text="{Baggage}" />
+
+            </form:SimpleForm>
         </content>
     </Page>
 </mvc:View>
